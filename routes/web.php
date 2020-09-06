@@ -27,16 +27,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware("auth")->group( function() {
 
-    Route::get('/user/dashboard', function () {
-        return view("l7board.dashboard");
+    Route::get('/admin/dashboard', function () {
+        return view("l7board.admin.dashboard");
     });
 
-    Route::get('/user/tables', function () {
-        return view("l7board.tables");
-    })->name('user.tables');
+    Route::get('/user/dashboard', function () {
+        return view("l7board.user.dashboard");
+    });
 
-    Route::get('/user/blank', function () {
-        return view("l7board.blank");
-    })->name('user.blank');
-    
+    Route::get('/admin/profile', function () {
+        return view("l7board.admin.profile");
+    });
+
+    Route::resource("/admin/products", "ProductController");
+    Route::resource("/admin/product/category", "CategoryController");
+
+
 });
+
