@@ -1,4 +1,4 @@
-@extends("layouts.dashboard")
+@extends("l7board.layout")
 @section("content")
 
 <!-- Begin Page Content -->

@@ -22,6 +22,21 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/user/dashboard', function() {
-    return view("dashboard");
+
+
+
+Route::middleware("auth")->group( function() {
+
+    Route::get('/user/dashboard', function () {
+        return view("l7board.dashboard");
+    });
+
+    Route::get('/user/tables', function () {
+        return view("l7board.tables");
+    })->name('user.tables');
+
+    Route::get('/user/blank', function () {
+        return view("l7board.blank");
+    })->name('user.blank');
+    
 });
