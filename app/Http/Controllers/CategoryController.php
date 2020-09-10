@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\CategoryFormRequest;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view("l7board.admin.categories");
+        $categories = Category::orderby("created_at", "desc")->paginate(10);
+        return view("l7board.admin.category.categories", compact("categories"));
     }
 
     /**
@@ -24,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view("l7board.admin.category.create");
     }
 
     /**
@@ -33,9 +35,10 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryFormRequest $request)
     {
-        //
+        Category::create($request->all());
+        return back()->with(["message" => "Category Added"]);
     }
 
     /**
@@ -57,7 +60,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+
+        $category = Category::find($category->id);
+        return view("l7board.admin.category.edit", compact("category"));
     }
 
     /**
@@ -69,7 +74,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        Category::find($category->id)->update(["name" => $request->name]);
+        return back()->with(["message" => "Categry Updated"]);
     }
 
     /**
@@ -80,6 +86,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::find($category->id)->delete();
+        return back()->with(["message" => "Categroy deleted successfully"]);
     }
 }

@@ -18,6 +18,10 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('app-assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+    <link href="{{ asset('css/app.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link href="{{ asset('app-assets/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -331,6 +335,9 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('app-assets/js/sb-admin-2.min.js')}}"></script>
+    
+    <script src="{{ asset('app-assets/js/demo/datatables-demo.js') }}"></script>
+    <script src="{{ asset('app-assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
 
 </body>
 

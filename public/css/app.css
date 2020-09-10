@@ -10904,3 +10904,11 @@ a.text-dark:focus {
   }
 }
 
+.btn-delete {
+  color: tomato;
+}
+
+.btn-edit {
+  color: skyblue;
+}
+
