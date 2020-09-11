@@ -21,6 +21,7 @@ class UserProfiles extends Migration
             $table->string("country");
             $table->text("city");
             $table->timestamps();
+            $table->softDeletes('deleted_at', 0);
         });
     }
 

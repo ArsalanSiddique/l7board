@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProductController extends Controller
 {
@@ -14,7 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view("l7board.admin.products");
+        $products = Product::orderby("created_at", "desc")->paginate(10);
+        return view("l7board.admin.products.products", compact(["products"]));
     }
 
     /**
@@ -24,7 +28,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::All();
+        return view("l7board.admin.products.create", compact("categories"));
     }
 
     /**
@@ -35,7 +40,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $rand_number = rand(100000, 999999);
+
+        if ($request->hasFile('photo')) {
+            $fileName = $request->photo->getClientOriginalName();
+            $unique_filename = "products/" . ($rand_number . "_" . $fileName);
+            $request->photo->storeAs("images", $unique_filename, 'public');
+        }
+        Product::create([
+            "category_id" => $request->category_id,
+            "name" => $request->name,
+            "details" => $request->details,
+            "price" => $request->price,
+            "photo" => $unique_filename,
+        ]);
+
+        return back()->with(["message" => "Product added successfully"]);
     }
 
     /**
@@ -46,7 +67,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $product = Product::find($product->id);
+        return view("l7board.admin.products.show", compact(["product"]));
     }
 
     /**
@@ -57,7 +79,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $product = Product::find($product->id);
+        $categories = Category::All();
+        return view("l7board.admin.products.edit", compact(["product", "categories"]));
     }
 
     /**
@@ -69,7 +93,35 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product = Product::find($product->id);
+        if ($request->hasFile('photo')) {
+
+            unlink(public_path('/storage/images/' . $product->photo));
+            // Storage::delete('/storage/images/' . $product->photo);
+
+            $rand_number = rand(100000, 999999);
+            $fileName = $request->photo->getClientOriginalName();
+            $unique_filename = "products/" . ($rand_number . "_" . $fileName);
+            $request->photo->storeAs("images", $unique_filename, 'public');
+
+            $product->update([
+                "category_id" => $request->category_id,
+                "name" => $request->name,
+                "details" => $request->details,
+                "price" => $request->price,
+                "photo" => $unique_filename,
+            ]);
+        } else {
+            $product->update([
+                "category_id" => $request->category_id,
+                "name" => $request->name,
+                "details" => $request->details,
+                "price" => $request->price,
+            ]);
+        }
+
+
+        return back()->with(["message" => "Product updated successfully"]);
     }
 
     /**
@@ -80,6 +132,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        unlink(public_path('/storage/images/' . $product->photo));
+        Product::find($product->id)->delete();
+        return back()->with(["message" => "Product Deleted Successfully"]);
     }
 }

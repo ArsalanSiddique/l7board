@@ -336,9 +336,10 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('app-assets/js/sb-admin-2.min.js')}}"></script>
     
-    <script src="{{ asset('app-assets/js/demo/datatables-demo.js') }}"></script>
+    
     <script src="{{ asset('app-assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
-
+    <script src="{{ asset('app-assets/js/demo/datatables-demo.js') }}"></script>
+    <script src="{{ asset('js/app.js')}}"></script>
 </body>
 
 </html>
