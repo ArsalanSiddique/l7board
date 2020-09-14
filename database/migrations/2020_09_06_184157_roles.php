@@ -17,6 +17,7 @@ class Roles extends Migration
             $table->id();
             $table->string("title");
             $table->timestamps();
+            $table->softDeletes('deleted_at', 0);
         });
     }
 

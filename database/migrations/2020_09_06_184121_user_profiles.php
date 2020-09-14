@@ -13,10 +13,12 @@ class UserProfiles extends Migration
      */
     public function up()
     {
-        Schema::create('user_profiles', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id");
             $table->foreign("user_id")->references("id")->on("users");
+            $table->text("phone");
+            $table->text("gender");
             $table->text("photo");
             $table->string("country");
             $table->text("city");
@@ -32,6 +34,6 @@ class UserProfiles extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_profiles');
+        Schema::dropIfExists('profiles');
     }
 }
