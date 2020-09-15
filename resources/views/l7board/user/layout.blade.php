@@ -61,40 +61,11 @@
                 <div id="products" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Products</h6>
-                        <a class="collapse-item" href="{{ route('products.create') }}">Add Products</a>
+                        <a class="collapse-item" href="{{ route('products.create') }}">My Products</a>
                         <a class="collapse-item" href="{{ route('products.index') }}">Product List</a>
                     </div>
                 </div>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#category" aria-expanded="true" aria-controls="category">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Categories</span>
-                </a>
-                <div id="category" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Categories</h6>
-                        <a class="collapse-item" href="{{ route('category.create') }}">Add Categories</a>
-                        <a class="collapse-item" href="{{ route('category.index') }}">Category List</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#role" aria-expanded="true" aria-controls="category">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Roles</span>
-                </a>
-                <div id="role" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Categories</h6>
-                        <a class="collapse-item" href="{{ route('roles.create') }}">Add Roles</a>
-                        <a class="collapse-item" href="{{ route('roles.index') }}">User Role List</a>
-                    </div>
-                </div>
-            </li>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -342,6 +313,7 @@
 
     <script src="{{ asset('app-assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('app-assets/js/demo/datatables-demo.js') }}"></script>
+
 </body>
 
 </html>

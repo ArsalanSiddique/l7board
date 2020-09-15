@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\profile;
+use App\user;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -26,14 +27,26 @@ class ProfileController extends Controller
     public function create()
     {
         $user_id = Auth::id();
-        $result = Profile::where('user_id', $user_id)->exists();
-        if ($result === false) { 
-            return view("l7board.admin.profile");
-        }else {
-            $profile = Profile::where('user_id', $user_id)->first();
-            return view("l7board.admin.profile", compact("profile"));
-        }
+        $role = Auth::user()->role()->first();
         
+
+        if ($role->title == "user") {
+            $result = Profile::where('user_id', $user_id)->exists();
+            if ($result === false) {
+                return view("l7board.user.profile");
+            } else {
+                $profile = Profile::where('user_id', $user_id)->first();
+                return view("l7board.user.profile", compact("profile"));
+            }
+        } else if ($role->title == "admin") {
+            $result = Profile::where('user_id', $user_id)->exists();
+            if ($result === false) {
+                return view("l7board.admin.profile");
+            } else {
+                $profile = Profile::where('user_id', $user_id)->first();
+                return view("l7board.admin.profile", compact("profile"));
+            }
+        }
     }
 
     /**
@@ -70,7 +83,7 @@ class ProfileController extends Controller
         } else {
             $user_id = Auth::id();
             $result = Profile::where('user_id', $user_id)->first();
-            
+
             if ($request->hasFile('photo')) {
 
                 unlink(public_path('/storage/images/' . $result->photo));
@@ -88,7 +101,6 @@ class ProfileController extends Controller
                     "gender" => $request->gender,
                     "photo" => $unique_filename,
                 ]);
-
             } else {
 
                 $result->update([
@@ -99,11 +111,9 @@ class ProfileController extends Controller
                     "gender" => $request->gender,
                     "photo" => $result->photo,
                 ]);
-
             }
             return back()->with(["message" => "Profile Updated Successfully."]);
         }
-
     }
 
 

@@ -35,13 +35,19 @@ Route::middleware("auth")->group( function() {
         return view("l7board.user.dashboard");
     });
 
-    Route::get('/admin/profile', function () {
-        return view("l7board.admin.profile");
-    });
+    // Route::get('/admin/profile', function () {
+    //     return view("l7board.admin.profile");
+    // });
+
+    // Route::get('/user/profile', function () {
+    //     return view("l7board.user.profile");
+    // });
 
     Route::resource("/admin/products", "ProductController");
+    Route::resource("/admin/roles", "RoleController");
     Route::resource("/admin/product/category", "CategoryController");
     Route::resource("/admin/profile", "ProfileController");
+    Route::resource("/user/profile", "ProfileController");
 
 });
 
