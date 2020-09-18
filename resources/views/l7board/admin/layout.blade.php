@@ -18,9 +18,10 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('app-assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
-    <link href="{{ asset('css/app.css')}}" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link href="{{ asset('app-assets/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/app.css')}}" rel="stylesheet">
 
 </head>
 
@@ -77,6 +78,20 @@
                         <h6 class="collapse-header">Categories</h6>
                         <a class="collapse-item" href="{{ route('category.create') }}">Add Categories</a>
                         <a class="collapse-item" href="{{ route('category.index') }}">Category List</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#users" aria-expanded="true" aria-controls="category">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Users</span>
+                </a>
+                <div id="users" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Users</h6>
+                        <a class="collapse-item" href="{{ route('users.create') }}">Add User</a>
+                        <a class="collapse-item" href="{{ route('users.index') }}">User List</a>
                     </div>
                 </div>
             </li>
@@ -268,8 +283,8 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
 
-                                @if(\App\profile::where('user_id', Auth::user()->id)->exists())
-                                <img class="img-profile rounded-circle" src="{{ asset('/storage/images/'.\App\profile::where('user_id', Auth::user()->id)->first()->photo) }}">
+                                @if(\App\Profile::where('user_id', Auth::user()->id)->exists())
+                                <img class="img-profile rounded-circle" src="{{ asset('/storage/images/'.\App\Profile::where('user_id', Auth::user()->id)->first()->photo) }}">
                                 @endif
                             </a>
 

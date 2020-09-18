@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use App\Profile;
-use App\User;
+use app\User;
+use app\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class ProfileController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::where("id", "!=", 1)->orderBy('created_at', 'desc')->paginate(10);
+        return view("l7board.admin.users.users", compact("users"));
     }
 
     /**
@@ -26,27 +27,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        $user_id = Auth::id();
-        $role = Auth::user()->role()->first();
-        
-
-        if ($role->title == "user") {
-            $result = Profile::where('user_id', $user_id)->exists();
-            if ($result === false) {
-                return view("l7board.user.profile");
-            } else {
-                $profile = Profile::where('user_id', $user_id)->first();
-                return view("l7board.user.profile", compact("profile"));
-            }
-        } else if ($role->title == "admin") {
-            $result = Profile::where('user_id', $user_id)->exists();
-            if ($result === false) {
-                return view("l7board.admin.profile");
-            } else {
-                $profile = Profile::where('user_id', $user_id)->first();
-                return view("l7board.admin.profile", compact("profile"));
-            }
-        }
+        return view("l7board.admin.users.create");
     }
 
     /**
@@ -57,8 +38,57 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $user_id = Auth::id();
-        $result = Profile::where('user_id', $user_id)->exists();
+        $user = User::create($request->all());
+
+        $user_id = $user->id;
+
+        $result = DB::table('user_roles')->insert(
+            ['user_id' => $user_id, 'role_id' => 1]
+        );
+
+        return back()->with(["message" => "User created successfully."]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $user = User::find($id);
+        return view("l7board.admin.users.show", compact("user"));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $user = User::find($id);
+        return view("l7board.admin.users.edit", compact("user"));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, User $user)
+    {
+        $user_id = $user->id;
+
+        if (isset($user->profile)) {
+            $result = true;
+        } else {
+            $result = false;
+        }
 
         if ($result === false) {
             if ($request->hasFile('photo')) {
@@ -81,7 +111,6 @@ class ProfileController extends Controller
 
             return back()->with(["message" => "Profile Created Successfully."]);
         } else {
-            $user_id = Auth::id();
             $result = Profile::where('user_id', $user_id)->first();
 
             if ($request->hasFile('photo')) {
@@ -116,49 +145,18 @@ class ProfileController extends Controller
         }
     }
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\profile  $profile
-     * @return \Illuminate\Http\Response
-     */
-    public function show(profile $profile)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\profile  $profile
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(profile $profile)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\profile  $profile
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, profile $profile)
-    {
-        //
-    }
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\profile  $profile
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(profile $profile)
+    public function destroy(User $user)
     {
-        //
+        $role = $user->role()->detach();
+        $Profile = $user->profile()->delete();
+        $user_record = $user->delete();
+
+        return back()->with(["message" => "Record deleted successfully"]);
     }
 }

@@ -1,10 +1,12 @@
 <?php
 
 namespace App;
+
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Profile;
 
 class User extends Authenticatable
 {
@@ -43,4 +45,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class, 'user_roles', 'user_id', 'role_id');
     }
+
+    public function Profile()
+    {
+        return $this->hasOne(Profile::class, 'user_id', 'id');
+    }
+
+    public function setPasswordAttribute($password) {
+        $this->attributes["password"] = bcrypt($password);
+    }
+
 }

@@ -36,7 +36,8 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Role::create($request->all());
+        return back()->with(["message" => "Role addded successfully."]);
     }
 
     /**
@@ -71,7 +72,8 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Role::find($id)->update(["title" => $request->title]);
+        return back()->with(["message" => "Role deleted successfully."]);
     }
 
     /**
@@ -82,6 +84,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Role::find($id)->delete();
+        return back()->with(["message" => "Role deleted successfully."]);
     }
 }

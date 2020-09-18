@@ -239,8 +239,8 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
 
-                                @if(\App\profile::where('user_id', Auth::user()->id)->exists())
-                                <img class="img-profile rounded-circle" src="{{ asset('/storage/images/'.\App\profile::where('user_id', Auth::user()->id)->first()->photo) }}">
+                                @if(\App\Profile::where('user_id', Auth::user()->id)->exists())
+                                <img class="img-profile rounded-circle" src="{{ asset('/storage/images/'.\App\Profile::where('user_id', Auth::user()->id)->first()->photo) }}">
                                 @endif
                             </a>
 

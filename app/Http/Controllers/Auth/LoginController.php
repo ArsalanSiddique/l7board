@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Controllers\Auth\Auth;
+
 class LoginController extends Controller
 
 {
@@ -33,9 +34,14 @@ class LoginController extends Controller
 
         // User role
         $role = auth()->user()->role->first();
-        
-        $title = $role->title;
-        
+
+
+        if (empty($role)) {
+            return '/home';
+        } else {
+            $title = $role->title;
+        }
+
         // Check user role
         switch ($title) {
             case 'admin':

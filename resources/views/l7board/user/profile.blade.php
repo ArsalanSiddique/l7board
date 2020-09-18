@@ -94,7 +94,7 @@
                     @else
                     <form action="{{ route('profile.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        
+
                         <div class="form-group">
                             <label for="phone"><b>Phone</b></label>
                             <input type="number" name="phone" id="phone" class="form-control" value="{{ $profile->phone ?? '' }}">
@@ -157,7 +157,7 @@
                 </div>
             </div>
         </div>
-        @if(\App\profile::where('user_id', Auth::user()->id)->exists())
+
         <div class="col-md-4 col-xs-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -165,12 +165,28 @@
                 </div>
                 <div class="card-body">
                     <div style="width: 100%;">
-                        <img src="{{ asset('/storage/images/'.$profile->photo) }}" class="img-fluid" alt="">
+                        @if(isset($user->profile->phone))
+                        <img src="{{ asset('/storage/images/'.$user->profile->photo) }}" class="img-fluid" alt="">
+                        @else
+                        <img src="{{ asset('/storage/images/profile/user.png') }}" class="img-fluid" alt="">
+                        @endif
                     </div>
                 </div>
+
+                <div class="card-footer">
+                    <button class="btn btn-danger" onclick="if(confirm('Are you really want to delete your account?')) { preventDefault(); document.getElementById('delform').submit() }">
+                        <i class="fas fa-trash mr-2"></i> Delete Account
+                    </button>
+                    <form action="{{ route('users.destroy', Auth::user()->id) }}" method="POST" id="delform">
+                        @csrf
+                        @method('delete')
+                        <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                    </form>
+                </div>
+
             </div>
         </div>
-        @endif
+
     </div>
 </div>
 <!-- /.container-fluid -->

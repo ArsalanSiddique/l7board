@@ -22,8 +22,8 @@
                         @csrf
                         <div class="form-group row">
                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                <label for="name"><b>Role Name</b></label>
-                                <input type="text" name="name" id="name" class="form-control">
+                                <label for="title"><b>Role Name</b></label>
+                                <input type="text" name="title" id="title" class="form-control">
                             </div>
                         </div>
                         <input type="submit" value="Add Role" class="btn btn-primary mt-3 btn-block">

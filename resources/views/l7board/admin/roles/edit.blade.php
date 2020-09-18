@@ -23,11 +23,11 @@
                         @method('PATCH')
                         <div class="form-group row">
                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                <label for="name"><b>Role Name</b></label>
-                                <input type="text" name="name" id="name" class="form-control" value="{{ $role->title }}">
+                                <label for="title"><b>Role Name</b></label>
+                                <input type="text" name="title" id="title" class="form-control" value="{{ $role->title }}">
                             </div>
                         </div>
-                        <input type="submit" value="Add Role" class="btn btn-primary mt-3 btn-block">
+                        <input type="submit" value="Update Role" class="btn btn-primary mt-3 btn-block">
 
                     </form>
                 </div>
