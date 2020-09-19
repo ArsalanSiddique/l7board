@@ -9,7 +9,7 @@
 
     <!-- Add Products -->
     <div class="row mt-3">
-        <div class="col-md-8 col-xs-12">
+        <div class="col-md-10 col-xs-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Products Details</h6>
@@ -30,7 +30,7 @@
                         <div class="form-group">
 
                             <label for="details"><b>Product Details</b></label>
-                            <textarea name="details" class="form-control" id="" cols="30" rows="10">{{ $product['details'] }}</textarea>
+                            <textarea name="details" class="form-control tinymce-editor" id="" cols="30" rows="10">{{ $product['details'] }}</textarea>
 
                         </div>
                         <div class="form-group">

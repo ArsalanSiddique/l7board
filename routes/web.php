@@ -25,7 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-Route::middleware("auth")->group( function() {
+Route::middleware("auth")->group(function () {
 
     Route::get('/admin/dashboard', function () {
         return view("l7board.admin.dashboard");
@@ -49,7 +49,4 @@ Route::middleware("auth")->group( function() {
     Route::resource("/admin/product/category", "CategoryController");
     Route::resource("/admin/profile", "ProfileController");
     Route::resource("/user/profile", "ProfileController");
-
 });
-
-

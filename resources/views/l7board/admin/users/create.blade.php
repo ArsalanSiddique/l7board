@@ -40,8 +40,8 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                <label for="confirm"><b>Confirm Password</b></label>
-                                <input type="password" name="confirm" id="confirm" class="form-control" required="required">
+                                <label for="password_confirmation"><b>Confirm Password</b></label>
+                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required="required">
                             </div>
                         </div>
                         <input type="submit" value="Add User" class="btn btn-primary mt-3 btn-block">

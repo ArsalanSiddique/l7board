@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryFormRequest extends FormRequest
+class UserFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +24,9 @@ class CategoryFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'bail|required|unique:categories|max:30',
-        ];
-    }
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            "max" => "Category name should not be exceeded by 30 characters.",
-            "required" => "Category field required.",
+            'name' => 'bail|required|max:250',
+            'email' => 'bail|required|regex:/(.+)@(.+)\.(.+)/i|unique:users',
+            'password' => 'bail|required|min:8|confirmed',
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileFormRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Profile;
 use App\User;
@@ -55,7 +56,7 @@ class ProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProfileFormRequest $request)
     {
         $user_id = Auth::id();
         $result = Profile::where('user_id', $user_id)->exists();

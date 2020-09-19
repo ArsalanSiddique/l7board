@@ -18,7 +18,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('app-assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link href="{{ asset('app-assets/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
     <link href="{{ asset('css/app.css')}}" rel="stylesheet">
@@ -56,7 +56,7 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#products" aria-expanded="true" aria-controls="products">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-tags"></i>
                     <span>Products</span>
                 </a>
                 <div id="products" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -70,7 +70,7 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#category" aria-expanded="true" aria-controls="category">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-list-ul"></i>
                     <span>Categories</span>
                 </a>
                 <div id="category" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -84,7 +84,7 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#users" aria-expanded="true" aria-controls="category">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-users"></i>
                     <span>Users</span>
                 </a>
                 <div id="users" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -98,7 +98,7 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#role" aria-expanded="true" aria-controls="category">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-id-card"></i>
                     <span>Roles</span>
                 </a>
                 <div id="role" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -357,6 +357,29 @@
 
     <script src="{{ asset('app-assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('app-assets/js/demo/datatables-demo.js') }}"></script>
+
+
+    <script src="https://cdn.tiny.cloud/1/ye0jqxe1mrtacx3jbgge8jnizqetnsp0714l54fbmprbesqe/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea.tinymce-editor',
+            height: 700,
+            menubar: true,
+            plugins: [
+                'image code advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+            ],
+            
+            toolbar: 'undo redo | formatselect | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | image | code | help',
+
+            content_css: '//www.tiny.cloud/css/codepen.min.css'
+        });
+    </script>
+
 </body>
 
 </html>

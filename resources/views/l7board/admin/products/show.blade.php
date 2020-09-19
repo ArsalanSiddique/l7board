@@ -29,7 +29,9 @@
 
                     <div class="m-1">
 
-                    {{ $product->details }}
+                    
+                    {!! $product->details !!}
+
 
                     </div>
                 </div>

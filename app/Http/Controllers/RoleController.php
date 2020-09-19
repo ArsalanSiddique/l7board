@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RoleFormRequest;
 use Illuminate\Http\Request;
 use App\Role;
 
@@ -34,7 +35,7 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleFormRequest $request)
     {
         Role::create($request->all());
         return back()->with(["message" => "Role addded successfully."]);
@@ -70,10 +71,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleFormRequest $request, $id)
     {
         Role::find($id)->update(["title" => $request->title]);
-        return back()->with(["message" => "Role deleted successfully."]);
+        return back()->with(["message" => "Role updated successfully."]);
     }
 
     /**
