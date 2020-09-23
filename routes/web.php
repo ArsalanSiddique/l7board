@@ -18,6 +18,39 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'webController@index');
+Route::get('/about', function() {
+    return view('about');
+});
+Route::get('/checkout', function() {
+    return view('checkout');
+});
+Route::get('/wishlist', function() {
+    return view('wishlist');
+});
+Route::get('/compare', function() {
+    return view('compare');
+});
+Route::get('/faq', function() {
+    return view('faq');
+});
+Route::get('/cart', function() {
+    return view('cart');
+});
+Route::get('/track-order', function() {
+    return view('track-order');
+});
+Route::get('/terms-and-conditions', function() {
+    return view('terms-and-conditions');
+});
+Route::get('/products', function() {
+    return view('products');
+});
+Route::get('/contact', function() {
+    return view('contact');
+});
+Route::get('/', 'webController@index');
+Route::get('/product/{product}/view', 'webController@singleProductShow')->name('product-view');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
