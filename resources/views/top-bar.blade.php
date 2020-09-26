@@ -9,9 +9,7 @@
             <div class="topbar__item topbar__item--link"><a class="topbar-link" href="#">Blog</a></div>
             <div class="topbar__spring"></div>
             <div class="topbar__item">
-                <div class="topbar-dropdown"><button class="topbar-dropdown__btn" type="button">My Account <svg width="7px" height="5px">
-                            <use xlink:href="images/sprite.svg#arrow-rounded-down-7x5"></use>
-                        </svg></button>
+                <div class="topbar-dropdown"><button class="topbar-dropdown__btn" type="button">My Account <i class="fas fa-angle-down"></i></button>
                     <div class="topbar-dropdown__body">
                         <!-- .menu -->
                         <ul class="menu menu--layout--topbar">
@@ -22,9 +20,7 @@
                 </div>
             </div>
             <div class="topbar__item">
-                <div class="topbar-dropdown"><button class="topbar-dropdown__btn" type="button">Currency: <span class="topbar__item-value">USD</span> <svg width="7px" height="5px">
-                            <use xlink:href="images/sprite.svg#arrow-rounded-down-7x5"></use>
-                        </svg></button>
+                <div class="topbar-dropdown"><button class="topbar-dropdown__btn" type="button">Currency: <span class="topbar__item-value">USD</span> <i class="fas fa-angle-down"></i></button>
                     <div class="topbar-dropdown__body">
                         <!-- .menu -->
                         <ul class="menu menu--layout--topbar">
@@ -34,9 +30,7 @@
                 </div>
             </div>
             <div class="topbar__item">
-                <div class="topbar-dropdown"><button class="topbar-dropdown__btn" type="button">Language: <span class="topbar__item-value">EN</span> <svg width="7px" height="5px">
-                            <use xlink:href="images/sprite.svg#arrow-rounded-down-7x5"></use>
-                        </svg></button>
+                <div class="topbar-dropdown"><button class="topbar-dropdown__btn" type="button">Language: <span class="topbar__item-value">EN</span> <i class="fas fa-angle-down"></i></button>
                     <div class="topbar-dropdown__body">
                         <!-- .menu -->
                         <ul class="menu menu--layout--topbar menu--with-icons">
