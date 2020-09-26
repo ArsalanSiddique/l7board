@@ -358,38 +358,7 @@
             </div>
         </div>
 
-        <div class="block-slideshow block-slideshow--layout--full block">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="block-slideshow__body">
-                            <div class="owl-carousel owl-loaded owl-drag">
-                                <div class="owl-stage-outer">
-                                    <div class="owl-stage" style="transform: translate3d(-3330px, 0px, 0px); transition: all 0.25s ease 0s; width: 7770px;">
-                                        @foreach($sliders as $slide)
-                                        <div class="owl-item" style="width: 1110px;">
-                                            <a class="block-slideshow__slide" href="#">
-                                                <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url( {{ asset('/storage/images/'.$slide->photo) }} )"></div>
-                                                <div class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url( {{ asset('/storage/images/'.$slide->photo) }} )"></div>
-                                                <div class="block-slideshow__slide-content">
-                                                    <div class="block-slideshow__slide-title">Big choice of<br>{{ $slide->category->name }} Products</div>
-                                                    <div class="block-slideshow__slide-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.</div>
-                                                    <div class="block-slideshow__slide-button"><span class="btn btn-primary btn-lg">Shop Now</span></div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div>
-                                <div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- .block-slideshow / end -->
+
 
         <!-- .block-features -->
         <div class="block block-features block-features--layout--classic">

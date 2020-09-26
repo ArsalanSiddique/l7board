@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
+use App\Brand;
 use App\Http\Requests\ProductFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -30,7 +31,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::All();
-        return view("l7board.admin.products.create", compact("categories"));
+        $brands = Brand::All();
+        return view("l7board.admin.products.create", compact(["categories", "brands"]));
     }
 
     /**
@@ -53,8 +55,12 @@ class ProductController extends Controller
             "category_id" => $request->category_id,
             "name" => $request->name,
             "details" => $request->details,
+            "specification" => $request->specification,
             "price" => $request->price,
             "photo" => $unique_filename,
+            "brand_id" => $request->brand_id,
+            "weight" => $request->weight,
+            "material" => $request->material,
         ]);
 
         return back()->with(["message" => "Product added successfully"]);

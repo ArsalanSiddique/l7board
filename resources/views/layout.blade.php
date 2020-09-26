@@ -101,13 +101,13 @@
                 </div>
             </div>
             <div class="site-footer__bottom">
-                <div class="site-footer__copyright">Design & Developed by <a target="_blank" href="#">Arsalan Ahmed</a></div>
-                <div class="site-footer__payments"><img src="images/payments.png" alt=""></div>
+                <div class="site-footer__copyright">Design & Developed by <a target="_blank" href="#">Arsalan Ahmed <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare" type="button"><svg width="16px" height="16px"><use xlink:href="{{ asset('/storage/images/sprite.svg#compare-16') }}"></use></svg> <span class="fake-svg-icon fake-svg-icon--compare-16"></span></button></a></div>
+                <!-- <div class="site-footer__payments"><img src="{{ asset('/storage/images/payments.png') }}" alt=""></div> -->
             </div>
         </div>
     </div>
 </footer><!-- site__footer / end -->
 </div><!-- site / end -->
-</body>
 
+</body>
 </html>

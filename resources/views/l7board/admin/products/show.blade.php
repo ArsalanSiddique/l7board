@@ -25,14 +25,25 @@
                     <h2 class="font-weight-bolder mt-4 ml-1"> {{ $product->name }} </h2>
                     <p class="ml-1"> {{ date("Y, d-M h:i", strtotime($product->created_at)) }} &nbsp;&nbsp; | &nbsp;&nbsp; {{ App\Category::find($product->category_id)->name }} </p>
 
-                    <hr>
 
+                    <p class="ml-1"> <b class="mr-3">Price:</b>  {{ "$ ".$product->price }} </p>
+                    <p class="ml-1"> <b class="mr-3">Material: </b> {{ $product->material }} </p>
+                    <p class="ml-1"> <b class="mr-3">Weight: </b> {{ $product->weight }} </p>
+                    <p class="ml-1"> <b class="mr-3">Brand: </b> {{ $product->brand->name }} </p>
+                    <p class="ml-1"> <b class="mr-3">Stock: </b> {{ $product->product_stock($product->id) }} </p>
+
+                    <hr>
                     <div class="m-1">
 
-                    
                     {!! $product->details !!}
-
-
+                    </div>
+                    
+                    <br>
+                    <hr>
+                    <br>
+                    
+                    <div class="m-1">
+                    {!! $product->specification !!}
                     </div>
                 </div>
             </div>

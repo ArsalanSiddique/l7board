@@ -79,6 +79,7 @@ Route::middleware("auth")->group(function () {
 
     Route::resource("/admin/products", "ProductController");
     Route::resource("/admin/roles", "RoleController");
+    Route::resource("/admin/stock", "StockController");
     Route::resource("/admin/users", "UserController");
     Route::resource("/admin/product/category", "CategoryController");
     Route::resource("/admin/profile", "ProfileController");

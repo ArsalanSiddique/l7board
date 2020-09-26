@@ -29,7 +29,9 @@
                                     <th>#</th>
                                     <th>Photo</th>
                                     <th>Name</th>
-                                    <th>Category Name</th>
+                                    <th>Category</th>
+                                    <th>Stock</th>
+                                    <th>Sell</th>
                                     <th>Create At</th>
                                     <th>Updated At</th>
                                     <th>Action</th>
@@ -40,8 +42,10 @@
                                     <th>#</th>
                                     <th>Photo</th>
                                     <th>Name</th>
-                                    <th>Category Name</th>
-                                    <th>Create At</th>
+                                    <th>Category</th>
+                                    <th>Stock</th>
+                                    <th>Sell</th>
+                                    <th>Created At</th>
                                     <th>Updated At</th>
                                     <th>Action</th>
                                 </tr>
@@ -53,6 +57,8 @@
                                     <td> <img id="myImg" src="{{ asset('storage/images/'.$product['photo']) }}" width="100px" /></td>
                                     <td>{{ $product["name"] }}</td>
                                     <td> {{ App\Category::find($product["category_id"])->name }} </td>
+                                    <td> {{ $product->product_stock($product->id) }} </td>
+                                    <td> </td>
                                     <td>{{ date("Y, d M h:i", strtotime($product["created_at"]))  }}</td>
                                     <td>{{ date("Y, d M h:i", strtotime($product["updated_at"]))  }}</td>
                                     <td>

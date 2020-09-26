@@ -64,6 +64,7 @@
                         <h6 class="collapse-header">Products</h6>
                         <a class="collapse-item" href="{{ route('products.create') }}">Add Products</a>
                         <a class="collapse-item" href="{{ route('products.index') }}">Product List</a>
+                        <a class="collapse-item" href="{{ route('stock.create') }}">Add Product Stock</a>
                     </div>
                 </div>
             </li>

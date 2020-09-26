@@ -26,4 +26,5 @@ class webController extends Controller
         $related_products = Category::find($product->category_id)->products->except($product->id);
         return view("single-product", compact(["product", "related_products"]));
     }
+
 }

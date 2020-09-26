@@ -26,29 +26,54 @@
                             <input type="text" name="name" id="name" class="form-control">
 
                         </div>
+                        
                         <div class="form-group">
-
                             <label for="details"><b>Product Details</b></label>
                             <textarea name="details" class="form-control tinymce-editor" id="" cols="30" rows="10"></textarea>
-
                         </div>
+
+                        <div class="form-group">
+                            <label for="specification"><b>Product Specification</b></label>
+                            <textarea name="specification" class="form-control tinymce-editor" id="" cols="30" rows="10"></textarea>
+                        </div>
+
                         <div class="form-group">
 
                             <label for="category"><b>Product Category</b></label>
                             <select name="category_id" class="form-control" id="category">
                                 <option value="null">Select Category</option>
-                                @foreach($categories as $category) 
+                                @foreach($categories as $category)
                                 <option value="{{ $category['id'] }}">{{ $category["name"] }}</option>
                                 @endforeach
                             </select>
 
                         </div>
-                        <div class="form-group">
 
+                        <div class="form-group">
                             <label for="price"><b>Product Price</b></label>
                             <input type="number" name="price" id="price" class="form-control">
-
                         </div>
+
+                        <div class="form-group">
+                            <label for="brand"><b>Product Brand</b></label>
+                            <select name="brand_id" class="form-control" id="brand">
+                                <option value="null">Select</option>
+                                @foreach($brands as $brand)
+                                <option value="{{ $brand['id'] }}">{{ $brand["name"] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="weight"><b>Product Weight</b></label>
+                            <input type="text" name="weight" id="weight" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="material"><b>Product Material</b></label>
+                            <input type="text" name="material" id="material" class="form-control">
+                        </div>
+
                         <div class="form-group">
                             <label for="file"> <b> Upload Product Photo</b></label>
                             <div class="custom-file">
