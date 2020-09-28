@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
@@ -27,4 +29,24 @@ class webController extends Controller
         return view("single-product", compact(["product", "related_products"]));
     }
 
+    public function addtocart(Request $data)
+    {
+        if (Auth::check()) {
+            $user_id = Auth::id();
+            $product_id = $data["product_id"];
+
+            DB::table('cart')->insert(
+                [
+                    'user_id' => $user_id,
+                    'product_id' => $product_id,
+                    'created_at' =>  new \Datetime(),
+                    'updated_at' =>  new \Datetime(),
+                ]
+            );
+
+            return back()->with(["message" => "Product added to your cart."]);
+        } else {
+            return redirect('login');
+        }
+    }
 }

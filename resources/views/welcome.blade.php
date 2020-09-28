@@ -6,6 +6,8 @@
         <div class="modal-content"></div>
     </div>
 </div><!-- quickview-modal / end -->
+
+
 <!-- mobilemenu -->
 <div class="mobilemenu">
     <div class="mobilemenu__backdrop"></div>
@@ -325,6 +327,7 @@
         <div class="site-header">
 
             @include('top-bar')
+            @include('components.weberrors')
             @include('logo-search')
             @include('page-menu')
 
@@ -439,18 +442,11 @@
                                             </div>
                                             <div class="product-card__rating-legend">11 Reviews</div>
                                         </div>
-                                        <ul class="product-card__features-list">
-                                            <li>Speed: 750 RPM</li>
-                                            <li>Power Source: Cordless-Electric</li>
-                                            <li>Battery Cell Type: Lithium</li>
-                                            <li>Voltage: 20 Volts</li>
-                                            <li>Battery Capacity: 2 Ah</li>
-                                        </ul>
                                     </div>
                                     <div class="product-card__actions">
                                         <div class="product-card__availability">Availability: <span class="text-success">In Stock</span></div>
-                                        <div class="product-card__prices">$ {{  number_format($fproducts->price, 2) }}</div>
-                                        <div class="product-card__buttons"><button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button> <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button> <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"><svg width="16px" height="16px">
+                                        <div class="product-card__prices">$ {{ number_format($fproducts->price, 2) }}</div>
+                                        <div class="product-card__buttons"><button class="btn btn-primary product-card__addtocart" type="button" onclick="addToCart({{ $fproducts->id }})">Add To Cart</button> <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button> <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"><svg width="16px" height="16px">
                                                     <use xlink:href="images/sprite.svg#wishlist-16"></use>
                                                 </svg> <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span></button> <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare" type="button"><svg width="16px" height="16px">
                                                     <use xlink:href="images/sprite.svg#compare-16"></use>
@@ -463,6 +459,7 @@
                     </div>
                 </div>
             </div>
+
         </div><!-- .block-products-carousel / end -->
         <!-- .block-banner -->
         <div class="block block-banner">
@@ -503,18 +500,11 @@
                                         </div>
                                         <div class="product-card__rating-legend">9 Reviews</div>
                                     </div>
-                                    <ul class="product-card__features-list">
-                                        <li>Speed: 750 RPM</li>
-                                        <li>Power Source: Cordless-Electric</li>
-                                        <li>Battery Cell Type: Lithium</li>
-                                        <li>Voltage: 20 Volts</li>
-                                        <li>Battery Capacity: 2 Ah</li>
-                                    </ul>
                                 </div>
                                 <div class="product-card__actions">
                                     <div class="product-card__availability">Availability: <span class="text-success">In Stock</span></div>
                                     <div class="product-card__prices">$749.00</div>
-                                    <div class="product-card__buttons"><button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button> <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button> <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"><svg width="16px" height="16px">
+                                    <div class="product-card__buttons"><button class="btn btn-primary product-card__addtocart" type="button" onclick="addToCart({{ $top_best_seller->id }})">Add To Cart</button> <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button> <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"><svg width="16px" height="16px">
                                                 <use xlink:href="images/sprite.svg#wishlist-16"></use>
                                             </svg> <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span></button> <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare" type="button"><svg width="16px" height="16px">
                                                 <use xlink:href="images/sprite.svg#compare-16"></use>
@@ -545,22 +535,20 @@
                                         </div>
                                         <div class="product-card__rating-legend">11 Reviews</div>
                                     </div>
-                                    <ul class="product-card__features-list">
-                                        <li>Speed: 750 RPM</li>
-                                        <li>Power Source: Cordless-Electric</li>
-                                        <li>Battery Cell Type: Lithium</li>
-                                        <li>Voltage: 20 Volts</li>
-                                        <li>Battery Capacity: 2 Ah</li>
-                                    </ul>
                                 </div>
                                 <div class="product-card__actions">
                                     <div class="product-card__availability">Availability: <span class="text-success">In Stock</span></div>
-                                    <div class="product-card__prices">$ {{  number_format($best->price, 2) }}</div>
-                                    <div class="product-card__buttons"><button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button> <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button> <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"><svg width="16px" height="16px">
-                                                <use xlink:href="images/sprite.svg#wishlist-16"></use>
-                                            </svg> <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span></button> <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare" type="button"><svg width="16px" height="16px">
-                                                <use xlink:href="images/sprite.svg#compare-16"></use>
-                                            </svg> <span class="fake-svg-icon fake-svg-icon--compare-16"></span></button></div>
+                                    <div class="product-card__prices">$ {{ number_format($best->price, 2) }}</div>
+                                    <div class="product-card__buttons">
+                                        <button class="btn btn-primary product-card__addtocart" type="button" onclick="addToCart({{ $best->id }})">Add To Cart</button>
+                                        <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+                                        <button class="btn btn-light" type="button">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                        <button class="btn btn-light" type="button">
+                                            <i class="fas fa-chart-bar"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -706,22 +694,10 @@
                                             </div>
                                             <div class="product-card__rating-legend">9 Reviews</div>
                                         </div>
-                                        <ul class="product-card__features-list">
-                                            <li>Speed: 750 RPM</li>
-                                            <li>Power Source: Cordless-Electric</li>
-                                            <li>Battery Cell Type: Lithium</li>
-                                            <li>Voltage: 20 Volts</li>
-                                            <li>Battery Capacity: 2 Ah</li>
-                                        </ul>
                                     </div>
                                     <div class="product-card__actions">
                                         <div class="product-card__availability">Availability: <span class="text-success">In Stock</span></div>
-                                        <div class="product-card__prices">$ {{  number_format($new->price, 2) }}</div>
-                                        <div class="product-card__buttons"><button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button> <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button> <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"><svg width="16px" height="16px">
-                                                    <use xlink:href="images/sprite.svg#wishlist-16"></use>
-                                                </svg> <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span></button> <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare" type="button"><svg width="16px" height="16px">
-                                                    <use xlink:href="images/sprite.svg#compare-16"></use>
-                                                </svg> <span class="fake-svg-icon fake-svg-icon--compare-16"></span></button></div>
+                                        <div class="product-card__prices">$ {{ number_format($new->price, 2) }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -745,22 +721,13 @@
                                             </div>
                                             <div class="product-card__rating-legend">9 Reviews</div>
                                         </div>
-                                        <ul class="product-card__features-list">
-                                            <li>Speed: 750 RPM</li>
-                                            <li>Power Source: Cordless-Electric</li>
-                                            <li>Battery Cell Type: Lithium</li>
-                                            <li>Voltage: 20 Volts</li>
-                                            <li>Battery Capacity: 2 Ah</li>
-                                        </ul>
                                     </div>
                                     <div class="product-card__actions">
                                         <div class="product-card__availability">Availability: <span class="text-success">In Stock</span></div>
-                                        <div class="product-card__prices">$ {{  number_format($new->price, 2) }}</div>
-                                        <div class="product-card__buttons"><button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button> <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button> <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"><svg width="16px" height="16px">
-                                                    <use xlink:href="images/sprite.svg#wishlist-16"></use>
-                                                </svg> <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span></button> <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare" type="button"><svg width="16px" height="16px">
-                                                    <use xlink:href="images/sprite.svg#compare-16"></use>
-                                                </svg> <span class="fake-svg-icon fake-svg-icon--compare-16"></span></button></div>
+                                        <div class="product-card__prices">$ {{ number_format($new->price, 2) }}</div>
+                                        <div class="product-card__buttons">
+                                            <button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button> <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">Add To Cart</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -931,27 +898,20 @@
                                                     </div>
                                                     <div class="product-card__rating-legend">11 Reviews</div>
                                                 </div>
-                                                <ul class="product-card__features-list">
-                                                    <li>Speed: 750 RPM</li>
-                                                    <li>Power Source: Cordless-Electric</li>
-                                                    <li>Battery Cell Type: Lithium</li>
-                                                    <li>Voltage: 20 Volts</li>
-                                                    <li>Battery Capacity: 2 Ah</li>
-                                                </ul>
                                             </div>
                                             <div class="product-card__actions">
                                                 <div class="product-card__availability">Availability: <span class="text-success">In Stock</span></div>
-                                                <div class="product-card__prices">$ {{  number_format($top->price, 2) }}</div>
+                                                <div class="product-card__prices">$ {{ number_format($top->price, 2) }}</div>
                                                 <div class="product-card__buttons">
-                                                    <button class="btn btn-primary product-card__addtocart" type="button">Add To Cart</button>
+                                                    <button class="btn btn-primary product-card__addtocart" type="button" onclick="addToCart({{ $top->id }})">Add To Cart</button>
                                                     <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" style="height:100% !important;" type="button">Add To Cart</button>
-                                                    <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button"><svg width="16px" height="16px">
-                                                            <use xlink:href="images/sprite.svg#wishlist-16"></use>
-                                                        </svg> <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                                                    <button class="btn btn-light" type="button">
+                                                        <i class="fas fa-heart"></i>
                                                     </button>
-                                                    <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare" type="button"><svg width="16px" height="16px">
-                                                            <use xlink:href="images/sprite.svg#compare-16"></use>
-                                                        </svg> <span class="fake-svg-icon fake-svg-icon--compare-16"></span></button></div>
+                                                    <button class="btn btn-light" type="button">
+                                                        <i class="fas fa-chart-bar"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -288,7 +288,7 @@
 
                     <div class="indicator indicator--trigger--click"><a href="cart.html" class="indicator__button"><span class="indicator__area">
                     <i class="fas fa-shopping-cart"></i>    
-                    <span class="indicator__value">3</span></span></a>
+                    <span class="indicator__value">0</span></span></a>
                         <div class="indicator__dropdown">
                             <!-- .dropcart -->
                             <div class="dropcart">

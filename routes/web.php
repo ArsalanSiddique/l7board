@@ -49,6 +49,7 @@ Route::get('/contact', function() {
     return view('contact');
 });
 Route::get('/', 'webController@index');
+Route::post('/addtocart', 'webController@addtocart')->name('addtocart');
 Route::get('/product/{product}/view', 'webController@singleProductShow')->name('product-view');
 
 Auth::routes();
